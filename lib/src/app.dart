@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:git_mob/src/screens/starter_screen.dart';
+import 'package:get/get.dart';
+import 'package:git_mob/src/screens/splash_screen.dart';
 import 'settings/settings_controller.dart';
 
 class MyApp extends StatelessWidget {
@@ -17,9 +18,8 @@ class MyApp extends StatelessWidget {
     return AnimatedBuilder(
       animation: settingsController,
       builder: (BuildContext context, Widget? child) {
-        return MaterialApp(
+        return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          restorationScopeId: 'app',
           localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(),
           darkTheme: ThemeData.dark(),
           themeMode: settingsController.themeMode,
-          home: const StarterScreen(),
+          home: const SplashScreen(),
         );
       },
     );
