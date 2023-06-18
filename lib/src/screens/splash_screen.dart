@@ -53,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
         },
       );
     } else {
-      Get.to(() => const FirstPage());
+      Get.to(() => FirstPage());
     }
   }
 }

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:git_mob/src/controller/first_page_controller.dart';
+import 'package:git_mob/src/screens/home_page.dart';
 import '../settings/settings_view.dart';
 
 class FirstPage extends StatelessWidget {
-  const FirstPage({super.key});
+  FirstPage({super.key});
+
+  final FirstPageController _controller = Get.put(FirstPageController());
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +34,21 @@ class FirstPage extends StatelessWidget {
                 height: 10,
               ),
               TextFormField(
+                controller: _controller.userNameController,
+                keyboardType: TextInputType.text,
                 decoration: const InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(width: 1, color: Colors.blue),
                         borderRadius: BorderRadius.all(Radius.circular(10)))),
-              )
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    _controller.getUserData(_controller.userNameController.text
+                        .toString()
+                        .toLowerCase());
+                    Get.to(() => HomePage());
+                  },
+                  child: const Text('Submit'))
             ]),
           )
         ],
