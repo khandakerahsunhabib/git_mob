@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'first_page.dart';
+import 'package:git_mob/src/screens/first_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

@@ -6,6 +6,7 @@ import 'package:git_mob/src/model/user_details.dart';
 
 class FirstPageController extends GetxController {
   TextEditingController userNameController = TextEditingController();
+  late TabController tabController;
 
   final userDetailsList = <UserDetails>[].obs;
   bool isLoading = true;

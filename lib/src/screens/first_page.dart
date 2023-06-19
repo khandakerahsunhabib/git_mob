@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:git_mob/src/controller/first_page_controller.dart';
 import 'package:git_mob/src/screens/home_page.dart';
-import '../settings/settings_view.dart';
 
 class FirstPage extends StatelessWidget {
   FirstPage({super.key});
@@ -17,9 +16,7 @@ class FirstPage extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
-            onPressed: () {
-              Navigator.restorablePushNamed(context, SettingsView.routeName);
-            },
+            onPressed: () {},
           ),
         ],
       ),
