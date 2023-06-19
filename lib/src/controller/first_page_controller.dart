@@ -8,6 +8,8 @@ class FirstPageController extends GetxController {
   TextEditingController userNameController = TextEditingController();
 
   final userDetailsList = <UserDetails>[].obs;
+  bool isLoading = true;
+  var isError = false;
 
   Future<UserDetails> getUserData(String username) async {
     final url = 'https://api.github.com/users/$username';
@@ -21,7 +23,8 @@ class FirstPageController extends GetxController {
       //print('userDetails return:${userDetails.toJson()}');
       return userDetails;
     } else {
-      throw Exception('Failed to load user information');
+      isError = true;
+      throw Exception('User information not found');
     }
   }
 }
