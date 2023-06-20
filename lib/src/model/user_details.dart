@@ -1,7 +1,7 @@
 class UserDetails {
   String? avatarUrl;
   String? name;
-  String? bio;
+  dynamic bio;
   String? login;
   int? followers;
   int? following;
@@ -20,7 +20,7 @@ class UserDetails {
     return UserDetails(
         avatarUrl: json['avatar_url'] as String,
         name: json['name'] as String,
-        bio: json['bio'] as String,
+        bio: json['bio'],
         login: json['login'] as String,
         followers: json['followers'] as int,
         following: json['following'] as int,

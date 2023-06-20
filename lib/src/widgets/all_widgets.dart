@@ -126,7 +126,7 @@ buildTabBarRepositories(context, index) {
           ),
           Container(
               constraints: const BoxConstraints.expand(height: 400),
-              child: TabBarView(children: [RepositoryList()]))
+              child: const TabBarView(children: [RepositoryList()]))
         ],
       ));
 }

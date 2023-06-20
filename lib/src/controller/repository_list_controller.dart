@@ -1,21 +1,24 @@
-import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import '../model/repository_list.dart';
 
 class RepositoryListController extends GetxController {
-  final repo = <All>[].obs;
+  final repoList = <RepositoryList>[].obs;
 
-  Future<All> getUserRepositoryList(String username) async {
+  Future<void> getUserRepositoryList(String username) async {
     final url = 'https://api.github.com/users/$username/repos';
     final dio = Dio();
-    final response = await dio.get(url);
-    if (response.statusCode == 200) {
-      print('response: ${response.data}');
-      final responseData = json.encode(response.data);
-      return All.fromJson(json.decode(responseData));
-    } else {
-      throw Exception('User information not found');
+
+    try {
+      final response = await dio.get(url);
+      if (response.statusCode == 200) {
+        final responseData = response.data as List<dynamic>;
+        final List<RepositoryList> fetchedRepositories =
+            responseData.map((json) => RepositoryList.fromJson(json)).toList();
+        repoList.assignAll(fetchedRepositories);
+      } else {}
+    } catch (e) {
+      throw Exception('Failed to fetch repositories: $e');
     }
   }
 }
