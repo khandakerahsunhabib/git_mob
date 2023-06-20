@@ -111,7 +111,6 @@ buildTabBarRepositories(context, index) {
           Container(
             constraints: const BoxConstraints.expand(height: 40),
             child: TabBar(
-                dividerColor: Colors.white,
                 indicatorColor: Colors.grey,
                 indicatorPadding: const EdgeInsets.only(bottom: 5),
                 indicatorWeight: 2,
@@ -127,7 +126,7 @@ buildTabBarRepositories(context, index) {
           ),
           Container(
               constraints: const BoxConstraints.expand(height: 400),
-              child: const TabBarView(children: [RepositoryList()]))
+              child: TabBarView(children: [RepositoryList()]))
         ],
       ));
 }

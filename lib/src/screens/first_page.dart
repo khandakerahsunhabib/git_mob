@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:git_mob/src/controller/first_page_controller.dart';
+import 'package:git_mob/src/controller/repository_list_controller.dart';
 import 'package:git_mob/src/screens/home_page.dart';
 
 class FirstPage extends StatelessWidget {
   FirstPage({super.key});
 
   final FirstPageController _controller = Get.put(FirstPageController());
+  final RepositoryListController controller =
+      Get.put(RepositoryListController());
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +44,10 @@ class FirstPage extends StatelessWidget {
               ElevatedButton(
                   onPressed: () {
                     _controller.getUserData(_controller.userNameController.text
+                        .toString()
+                        .toLowerCase());
+                    controller.getUserRepositoryList(_controller
+                        .userNameController.text
                         .toString()
                         .toLowerCase());
                     Get.to(() => HomePage());

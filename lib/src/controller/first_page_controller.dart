@@ -5,12 +5,10 @@ import 'package:get/get.dart';
 import 'package:git_mob/src/model/user_details.dart';
 
 class FirstPageController extends GetxController {
+  
   TextEditingController userNameController = TextEditingController();
-  late TabController tabController;
 
   final userDetailsList = <UserDetails>[].obs;
-  bool isLoading = true;
-  var isError = false;
 
   Future<UserDetails> getUserData(String username) async {
     final url = 'https://api.github.com/users/$username';
@@ -24,7 +22,6 @@ class FirstPageController extends GetxController {
       //print('userDetails return:${userDetails.toJson()}');
       return userDetails;
     } else {
-      isError = true;
       throw Exception('User information not found');
     }
   }

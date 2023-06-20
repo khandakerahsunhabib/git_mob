@@ -22,12 +22,12 @@ class HomePage extends StatelessWidget {
           () => ListView.builder(
               itemCount: _controller.userDetailsList.length,
               itemBuilder: (context, index) {
-                return upperPart(context, index);
+                return userData(context, index);
               }),
         ));
   }
 
-  Widget upperPart(context, index) {
+  Widget userData(context, index) {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
