@@ -23,25 +23,39 @@ class FirstPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            margin: const EdgeInsets.all(20),
-            child: Column(children: [
-              const Text('Input your github username'),
-              const SizedBox(
-                height: 10,
-              ),
-              TextFormField(
+      body: Container(
+        margin: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.blue),
+                  borderRadius: BorderRadius.circular(5)),
+              width: double.infinity,
+              height: 50,
+              child: TextFormField(
                 controller: _controller.userNameController,
                 keyboardType: TextInputType.text,
                 decoration: const InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(width: 1, color: Colors.blue),
-                        borderRadius: BorderRadius.all(Radius.circular(10)))),
+                    border: InputBorder.none,
+                    hintText: 'Enter your Github username',
+                    prefixIcon: Icon(Icons.supervisor_account),
+                    focusColor: Colors.amber),
               ),
-              ElevatedButton(
+            ),
+            const SizedBox(
+              height: 6,
+            ),
+            Container(
+              width: 130,
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(10)),
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
+                  ),
                   onPressed: () {
                     _controller.getUserData(_controller.userNameController.text
                         .toString()
@@ -52,10 +66,10 @@ class FirstPage extends StatelessWidget {
                         .toLowerCase());
                     Get.to(() => HomePage());
                   },
-                  child: const Text('Submit'))
-            ]),
-          )
-        ],
+                  child: const Text('SEARCH USER')),
+            )
+          ],
+        ),
       ),
     );
   }
