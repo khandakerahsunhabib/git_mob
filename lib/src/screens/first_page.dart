@@ -17,18 +17,20 @@ class FirstPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text('Git Mob'),
+        elevation: 0,
+        title: const Text('Git Hub Mobile'),
         actions: [
           IconButton(
-              onPressed: () {
-                MyApp.themeNotifier.value =
-                    MyApp.themeNotifier.value == ThemeMode.light
-                        ? ThemeMode.dark
-                        : ThemeMode.light;
-              },
-              icon: Icon(MyApp.themeNotifier.value == ThemeMode.light
-                  ? Icons.dark_mode
-                  : Icons.light_mode))
+            icon: Icon(MyApp.themeNotifier.value == ThemeMode.light
+                ? Icons.light_mode
+                : Icons.dark_mode),
+            onPressed: () {
+              MyApp.themeNotifier.value =
+                  MyApp.themeNotifier.value == ThemeMode.light
+                      ? ThemeMode.dark
+                      : ThemeMode.light;
+            },
+          )
         ],
       ),
       body: Container(
@@ -60,25 +62,28 @@ class FirstPage extends StatelessWidget {
               decoration:
                   BoxDecoration(borderRadius: BorderRadius.circular(10)),
               child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.black,
-                  ),
-                  onPressed: () {
-                    if (_controller.userDetailsList.isEmpty ||
-                        _controller.userDetailsList.isNotEmpty) {
-                      _controller.userDetailsList.clear();
-                      _controller.getUserData(_controller
-                          .userNameController.text
-                          .toString()
-                          .toLowerCase());
-                      controller.getUserRepositoryList(
-                          _controller.userNameController.text);
-                      Get.to(() => const HomePage());
-                      _controller.userNameController.clear();
-                    } else {}
-                  },
-                  child: const Text('SEARCH USER')),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.amber,
+                  foregroundColor: Colors.black,
+                ),
+                onPressed: () {
+                  if (_controller.userDetailsList.isEmpty ||
+                      _controller.userDetailsList.isNotEmpty) {
+                    _controller.userDetailsList.clear();
+                    _controller.getUserData(_controller.userNameController.text
+                        .toString()
+                        .toLowerCase());
+                    controller.getUserRepositoryList(
+                        _controller.userNameController.text);
+                    Get.to(() => const HomePage());
+                    _controller.userNameController.clear();
+                  } else {}
+                },
+                child: Text(
+                  'SEARCH USER',
+                  style: Theme.of(context).textTheme.labelLarge,
+                ),
+              ),
             )
           ],
         ),
