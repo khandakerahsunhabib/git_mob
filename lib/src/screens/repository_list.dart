@@ -43,7 +43,7 @@ class _RepositoryListState extends State<RepositoryList> {
         minVerticalPadding: 5,
         trailing: IconButton(
             onPressed: () {
-              Get.to(()=>const RepositoryDetails());
+              Get.to(() => const RepositoryDetails());
             },
             icon: const Icon(Icons.arrow_circle_right_outlined)),
         title: Row(

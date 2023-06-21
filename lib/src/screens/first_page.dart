@@ -57,14 +57,18 @@ class FirstPage extends StatelessWidget {
                     foregroundColor: Colors.black,
                   ),
                   onPressed: () {
-                    _controller.getUserData(_controller.userNameController.text
-                        .toString()
-                        .toLowerCase());
-                    controller.getUserRepositoryList(_controller
-                        .userNameController.text
-                        .toString()
-                        .toLowerCase());
-                    Get.to(() => HomePage());
+                    if (_controller.userDetailsList.isEmpty ||
+                        _controller.userDetailsList.isNotEmpty) {
+                      _controller.userDetailsList.clear();
+                      _controller.getUserData(_controller
+                          .userNameController.text
+                          .toString()
+                          .toLowerCase());
+                      controller.getUserRepositoryList(
+                          _controller.userNameController.text);
+                      Get.to(() => HomePage());
+                      _controller.userNameController.clear();
+                    } else {}
                   },
                   child: const Text('SEARCH USER')),
             )
