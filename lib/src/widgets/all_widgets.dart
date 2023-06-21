@@ -4,6 +4,7 @@ import 'package:git_mob/src/controller/first_page_controller.dart';
 import 'package:git_mob/src/screens/repository_list.dart';
 
 final FirstPageController _controller = Get.put(FirstPageController());
+final ValueNotifier<ThemeMode> themeNotifier = ValueNotifier(ThemeMode.light);
 
 profileSection(context, index) {
   return Column(
@@ -32,7 +33,7 @@ profileSection(context, index) {
                   style: Theme.of(context)
                       .textTheme
                       .labelLarge!
-                      .copyWith(fontSize: 20),
+                      .copyWith(fontSize: 20, color: Colors.grey[500]),
                 ),
                 Text(
                   _controller.userDetailsList[index].login.toString(),
@@ -59,7 +60,10 @@ bioAndFollowersSection(context, index) {
           width: double.infinity,
           child: Text(
             _controller.userDetailsList[index].bio.toString(),
-            style: Theme.of(context).textTheme.labelMedium!.copyWith(),
+            style: Theme.of(context)
+                .textTheme
+                .labelMedium!
+                .copyWith(color: Colors.grey[600]),
           ),
         ),
       ),

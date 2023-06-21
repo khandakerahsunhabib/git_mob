@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:git_mob/src/app.dart';
 import '../controller/first_page_controller.dart';
 import '../widgets/all_widgets.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final FirstPageController _controller = Get.put(FirstPageController());
 
   @override
@@ -16,6 +22,18 @@ class HomePage extends StatelessWidget {
           backgroundColor: Colors.black54,
           foregroundColor: Colors.white,
           elevation: 0,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  MyApp.themeNotifier.value =
+                      MyApp.themeNotifier.value == ThemeMode.light
+                          ? ThemeMode.dark
+                          : ThemeMode.light;
+                },
+                icon: Icon(MyApp.themeNotifier.value == ThemeMode.light
+                    ? Icons.dark_mode
+                    : Icons.light_mode))
+          ],
         ),
         drawer: const Drawer(),
         body: Obx(

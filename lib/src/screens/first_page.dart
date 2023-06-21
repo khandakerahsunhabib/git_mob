@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:git_mob/src/controller/first_page_controller.dart';
 import 'package:git_mob/src/controller/repository_list_controller.dart';
 import 'package:git_mob/src/screens/home_page.dart';
+import '../app.dart';
 
 class FirstPage extends StatelessWidget {
   FirstPage({super.key});
@@ -15,12 +16,19 @@ class FirstPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('Git Mob'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {},
-          ),
+              onPressed: () {
+                MyApp.themeNotifier.value =
+                    MyApp.themeNotifier.value == ThemeMode.light
+                        ? ThemeMode.dark
+                        : ThemeMode.light;
+              },
+              icon: Icon(MyApp.themeNotifier.value == ThemeMode.light
+                  ? Icons.dark_mode
+                  : Icons.light_mode))
         ],
       ),
       body: Container(
@@ -66,7 +74,7 @@ class FirstPage extends StatelessWidget {
                           .toLowerCase());
                       controller.getUserRepositoryList(
                           _controller.userNameController.text);
-                      Get.to(() => HomePage());
+                      Get.to(() => const HomePage());
                       _controller.userNameController.clear();
                     } else {}
                   },
