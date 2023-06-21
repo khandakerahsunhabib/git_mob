@@ -24,15 +24,15 @@ class _HomePageState extends State<HomePage> {
           elevation: 0,
           actions: [
             IconButton(
+              icon: Icon(MyApp.themeNotifier.value == ThemeMode.light
+                    ? Icons.dark_mode
+                    : Icons.light_mode),
                 onPressed: () {
                   MyApp.themeNotifier.value =
                       MyApp.themeNotifier.value == ThemeMode.light
                           ? ThemeMode.dark
                           : ThemeMode.light;
-                },
-                icon: Icon(MyApp.themeNotifier.value == ThemeMode.light
-                    ? Icons.dark_mode
-                    : Icons.light_mode))
+                },)
           ],
         ),
         drawer: const Drawer(),

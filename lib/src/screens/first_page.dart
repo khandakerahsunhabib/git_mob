@@ -18,7 +18,7 @@ class FirstPage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
-        title: const Text('Git Hub Mobile'),
+        title: const Text('GitHub Mobile'),
         actions: [
           IconButton(
             icon: Icon(MyApp.themeNotifier.value == ThemeMode.light
