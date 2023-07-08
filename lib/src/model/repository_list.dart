@@ -5,8 +5,8 @@ class RepositoryList {
   String? branch;
   dynamic language;
   String? url;
-  String? visibility;
-  String? description;
+  dynamic visibility;
+  dynamic description;
   int? stars;
 
   RepositoryList({
@@ -30,7 +30,7 @@ class RepositoryList {
         language: json['language'],
         url: json['html_url'] as String,
         stars: json['stargazers_count'] as int,
-        visibility: json['visibility'] as String,
-        description: json['description'] as String);
+        visibility: json['visibility'],
+        description: json['description']);
   }
 }
