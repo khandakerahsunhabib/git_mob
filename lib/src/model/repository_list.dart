@@ -5,6 +5,8 @@ class RepositoryList {
   String? branch;
   dynamic language;
   String? url;
+  String? visibility;
+  String? description;
   int? stars;
 
   RepositoryList({
@@ -15,6 +17,8 @@ class RepositoryList {
     required this.language,
     required this.url,
     required this.stars,
+    required this.visibility,
+    required this.description
   });
 
   factory RepositoryList.fromJson(Map<String, dynamic> json) {
@@ -25,18 +29,8 @@ class RepositoryList {
         branch: json['default_branch'] as String,
         language: json['language'],
         url: json['html_url'] as String,
-        stars: json['stargazers_count'] as int);
-  }
-}
-
-class All {
-  List<RepositoryList> repos;
-
-  All({required this.repos});
-
-  factory All.fromJson(List<dynamic> json) {
-    List<RepositoryList> repos = [];
-    repos = json.map((e) => RepositoryList.fromJson(e)).toList();
-    return All(repos: repos);
+        stars: json['stargazers_count'] as int,
+        visibility: json['visibility'] as String,
+        description: json['description'] as String);
   }
 }

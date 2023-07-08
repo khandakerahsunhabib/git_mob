@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:git_mob/src/controller/repository_list_controller.dart';
 import 'package:git_mob/src/screens/repository_details.dart';
-import '../model/repository_list.dart';
 
 class RepositoryList extends StatefulWidget {
   const RepositoryList({super.key});
@@ -12,7 +11,6 @@ class RepositoryList extends StatefulWidget {
 }
 
 class _RepositoryListState extends State<RepositoryList> {
-  late Future<All> futureRepo;
   final RepositoryListController controller =
       Get.put(RepositoryListController());
 
@@ -43,7 +41,8 @@ class _RepositoryListState extends State<RepositoryList> {
         minVerticalPadding: 5,
         trailing: IconButton(
             onPressed: () {
-              Get.to(() => const RepositoryDetails());
+              controller.selectedItemIndex.value=index;
+              Get.to(()=>RepositoryDetails());
             },
             icon: const Icon(Icons.arrow_circle_right_outlined)),
         title: Row(
@@ -66,7 +65,6 @@ class _RepositoryListState extends State<RepositoryList> {
               width: 50,
               height: 18,
               decoration: BoxDecoration(
-                  //color: Colors.green,
                   border: Border.all(width: 1, color: Colors.grey),
                   borderRadius: BorderRadius.circular(20)),
               child: Text(

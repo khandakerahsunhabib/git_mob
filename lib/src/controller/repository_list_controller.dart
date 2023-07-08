@@ -4,6 +4,7 @@ import '../model/repository_list.dart';
 
 class RepositoryListController extends GetxController {
   final repoList = <RepositoryList>[].obs;
+  final selectedItemIndex=0.obs;
 
   Future<void> getUserRepositoryList(String username) async {
     final url = 'https://api.github.com/users/$username/repos';
